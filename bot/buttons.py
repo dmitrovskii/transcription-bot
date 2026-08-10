@@ -1,6 +1,13 @@
 from aiogram import Bot
-from aiogram.types import InlineKeyboardButton
+from aiogram.types import InlineKeyboardButton, BotCommand
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+async def setup_bot_commands(bot: Bot) -> None:
+    commands = [
+        BotCommand(command="start", description="🚀 Restart Bot"),
+        BotCommand(command="language", description="🌐 Change language"),
+    ]
+    await bot.set_my_commands(commands)
 
 def get_summary():
     builder = InlineKeyboardBuilder() 

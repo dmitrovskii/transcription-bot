@@ -7,6 +7,7 @@ from aiogram.types import Message
 from config import config
 from bot.handlers import router
 from bot.database import lang_manager
+from bot.buttons import setup_bot_commands
 
 bot = Bot(token=config.bot_token)
 dp = Dispatcher()
@@ -22,6 +23,7 @@ async def main():
     try:
 
         await lang_manager.init_db()
+        await setup_bot_commands(bot)
         await dp.start_polling(bot)
 
     finally:
