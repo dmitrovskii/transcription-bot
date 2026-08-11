@@ -12,16 +12,19 @@ client_text = AsyncOpenAI(
     api_key=config.groq_token
 )
 
-async def process_voice(file_id: str, bot: Bot):
+async def process_voice(file_id: str, language_code: str, bot: Bot):
     file = await bot.download(file=file_id)
 
-    transcription = await client_audio.audio.transcriptions.create(
-        file=("voice.ogg", file.read()), # type: ignore
-        model="whisper-large-v3-turbo",
-        response_format="text",
-        language="ru",
-        prompt="Ну кароче, бля, пиздец"
-    )
+    params = {
+        "file": ("voice.ogg", file.read()),  # type: ignore
+        "model": "whisper-large-v3-turbo",
+        "response_format": "text",
+    }
+
+    if language_code and language_code != "auto":
+        params["language"] = language_code
+
+    transcription = await client_audio.audio.transcriptions.create(**params)
 
     return {"message": transcription}
 
