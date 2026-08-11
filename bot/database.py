@@ -1,7 +1,10 @@
 import aiosqlite
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class LanguageManager:
-    def __init__(self, db_path: str = "bot.db") -> None:
+    def __init__(self, db_path: str | Path = BASE_DIR / "data" / "bot.db") -> None:
         self.db_path = db_path
         self._cache: dict[int, str] = {}
 
