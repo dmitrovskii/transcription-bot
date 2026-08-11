@@ -12,7 +12,7 @@ router = Router()
 @router.message(F.voice.duration <= 300)
 async def transcriptions(message: Message, state: FSMContext, bot: Bot):
     if message.voice is None:
-        await message.reply("Something went wrong. Please send voice message again")
+        await message.reply("Something went wrong. Please try sending the voice message again.")
         return
 
     voice_id = message.voice.file_id
