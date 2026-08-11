@@ -16,7 +16,7 @@ dp.include_router(router)
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer("Hello! Send me a file until 5 minute.")
+    await message.answer("Hello! Send me any voice message under 5 minutes, and I'll convert it to text.")
 
 async def main():
     print(">>> Start...")

@@ -12,7 +12,7 @@ async def setup_bot_commands(bot: Bot) -> None:
 def get_summary():
     builder = InlineKeyboardBuilder() 
     builder.add(
-        InlineKeyboardButton(text="⬇️ Стислий зміст", callback_data="button_summary")
+        InlineKeyboardButton(text="⭐ Summary", callback_data="button_summary")
     )
     return builder.as_markup()
 
