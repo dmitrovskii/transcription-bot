@@ -8,7 +8,12 @@ ENV = BASE_DIR / '.env'
 
 class Settings(BaseSettings):
     bot_token: str
+
     groq_token: str
+    groq_base_url: str
+
+    stt_model: str
+    llm_model: str
 
     model_config = SettingsConfigDict(
         env_file=ENV,

@@ -2,13 +2,8 @@ from openai import AsyncOpenAI
 from config import config
 from aiogram import Bot
 
-client_audio = AsyncOpenAI(
-    base_url="https://api.groq.com/openai/v1",
-    api_key=config.groq_token
-)
-
-client_text = AsyncOpenAI(
-    base_url="https://api.groq.com/openai/v1",
+groq_client = AsyncOpenAI(
+    base_url=config.groq_base_url,
     api_key=config.groq_token
 )
 
@@ -17,20 +12,20 @@ async def process_voice(file_id: str, language_code: str, bot: Bot):
 
     params = {
         "file": ("voice.ogg", file.read()),  # type: ignore
-        "model": "whisper-large-v3-turbo",
+        "model": config.stt_model,
         "response_format": "text",
     }
 
     if language_code and language_code != "auto":
         params["language"] = language_code
 
-    transcription = await client_audio.audio.transcriptions.create(**params)
+    transcription = await groq_client.audio.transcriptions.create(**params)
 
     return {"message": transcription}
 
 async def process_text(transcribed_text: str):
-    response = await client_text.chat.completions.create(
-        model="llama-3.1-8b-instant",
+    response = await groq_client.chat.completions.create(
+        model=config.llm_model,
         messages=[
             {
                 "role": "assistant",
