@@ -7,10 +7,5 @@ __pycache__/
 *.pyc
 .cache/
 
-test.py
-*.png
-*.jpg
-*.jpeg
-
 *.db
 data/
