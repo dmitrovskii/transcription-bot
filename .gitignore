@@ -13,3 +13,4 @@ test.py
 *.jpeg
 
 *.db
+data/
