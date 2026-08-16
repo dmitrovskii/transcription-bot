@@ -40,7 +40,7 @@ Before you begin, make sure you have installed:
 | `GROQ_TOKEN` | API key from Groq Cloud | - |
 | `GROQ_BASE_URL` | Endpoint for the OpenAI-compatible client | `https://api.groq.com/openai/v1` |
 | `STT_MODEL` | Speech-to-Text model for voice transcription | `whisper-large-v3-turbo` |
-| `LLM_MODEL` | Text model for generating summaries | `llama-3.1-8b-instant` |
+| `LLM_MODEL` | Text model for generating summaries | `openai/gpt-oss-20b` |
 ---
 
 ## Quick Start
