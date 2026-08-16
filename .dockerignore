@@ -15,6 +15,7 @@ __pycache__/
 data/
 *.md
 *.txt
+!requirements.txt
 
 .dockerignore
 Dockerfile
