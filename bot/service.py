@@ -29,7 +29,7 @@ async def process_text(transcribed_text: str):
         messages=[
             {
                 "role": "assistant",
-                "content": "Summarize the following text. Constraint 1: Respond ONLY in the same language as the input text. Constraint 2: Keep it very brief (max 4-5 sentences or plain bullet points). Constraint 3: Do NOT use Markdown (no bolding, no asterisks, no hashes). Constraint 4: Focus only on the core idea, ignore all fluff and filler words. Perspective: Use third-person perspective ONLY (refer to the speaker as 'автор', 'користувач', 'человек' or 'людина'). 3. NEVER address the reader or the speaker as 'you' ('ты', 'вы', 'ти', 'ви')." 
+                "content": 'ou are a text summarizer. Summarize the input text according to these strict rules: 1. LANGUAGE MATCH: You MUST respond in the EXACT same language as the input text (e.g., Russian input -> Russian output; Ukrainian input -> Ukrainian output). 2. LENGTH: Maximum 4-5 sentences or plain text bullet points. 3. FORMATTING: Plain text ONLY. Do NOT use any Markdown (no asterisks *, no hashes #, no bolding). 4. CONCISENESS: Extract only the core message. Eliminate all filler and fluff. 5. PERSPECTIVE: Write strictly in the third person (refer to the author/speaker neutrally). NEVER address anyone in the second person ("you", "ты", "ти", etc.).'
             },
             {
                 "role": "user", "content": transcribed_text
